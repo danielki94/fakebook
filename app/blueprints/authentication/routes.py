@@ -1,3 +1,4 @@
+from flask_login.utils import login_required
 from .import bp as app
 from app import db
 from flask import render_template, url_for, request, redirect, flash
@@ -46,6 +47,7 @@ def register():
     
 
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     flash('User logged out successfully.', 'warning')

@@ -14,6 +14,8 @@ class User(UserMixin, db.Model):
     last_name = db.Column(db.String(50))
     email = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(200))
+    bio = db.Column(db.Text)
+    image = db.Column(db.String)
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     followed = db.relationship(
         'User', secondary=followers,
@@ -23,10 +25,10 @@ class User(UserMixin, db.Model):
         lazy='dynamic'
     )
 
-    def own_posts(self):
-        from app.blueprints.blog.models import Post
-        my_post = Post.query.filter_by(user_id=self.id)
-        return my_post
+    # def own_posts(self):
+    #     from app.blueprints.blog.models import Post
+    #     my_post = Post.query.filter_by(user_id=self.id)
+    #     return my_post
 
     def followed_posts(self):
         from app.blueprints.blog.models import Post

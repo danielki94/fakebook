@@ -5,11 +5,11 @@
 <h3>Home</h3>
 <hr />
 
-<form action="{{ url_for('main.home') }}" method="POST" s>
+<form action="{{ url_for('blog.create_post') }}" method="POST" s>
 	<div class="form-group">
 		<div class="row">
 			<div class="col-md-10">
-				<input name="body_text" class="form-control" type="text" placeholder="Your blog post here..." />
+				<input name="body" class="form-control" type="text" placeholder="Your blog post here..." />
 			</div>
 			<div class="col-md-2"> 
 				<input class="btn btn-info btn-block" type="submit" value="Post" />
